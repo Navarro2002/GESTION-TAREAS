@@ -13,5 +13,10 @@ namespace GESTION_TAREAS.Views.Usuarios
 		{
 
 		}
-	}
+
+        protected void btnCrear_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
 }
