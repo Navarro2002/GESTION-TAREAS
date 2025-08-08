@@ -89,11 +89,42 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Views\Auth\LoginPage.html" />
+    <Content Include="Views\Auth\LoginForm.aspx" />
+    <Content Include="Views\Home\HomeForm.aspx" />
+    <Content Include="Views\Tareas\TareasForm.aspx" />
+    <Content Include="Views\Usuarios\UsuariosForm.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\Auth\LoginForm.aspx.cs">
+      <DependentUpon>LoginForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Auth\LoginForm.aspx.designer.cs">
+      <DependentUpon>LoginForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Home\HomeForm.aspx.cs">
+      <DependentUpon>HomeForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Home\HomeForm.aspx.designer.cs">
+      <DependentUpon>HomeForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tareas\TareasForm.aspx.cs">
+      <DependentUpon>TareasForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Tareas\TareasForm.aspx.designer.cs">
+      <DependentUpon>TareasForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Usuarios\UsuariosForm.aspx.cs">
+      <DependentUpon>UsuariosForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Usuarios\UsuariosForm.aspx.designer.cs">
+      <DependentUpon>UsuariosForm.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
@@ -126,6 +157,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
