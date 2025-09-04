@@ -5,7 +5,7 @@
 <head runat="server">
     <title>Administrar Usuarios</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <link href="<%= ResolveUrl("~/Diseño/StyleSheet1.css")  %>"" rel="stylesheet" type="text/css" />
+    <link href="<%= ResolveUrl("~/Content/styles.css")  %>"" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <div class="Usuarios">
@@ -46,7 +46,26 @@
         </table>
         <hr />
         <h2>Lista de usuarios</h2>
-        <asp:Table ID="TableUsuarios" cssClass="table2" runat="server" BorderWidth="1" GridLines="Both"></asp:Table>
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="id_usuario" DataSourceID="SqlDataSUsuarios">
+            <Columns>
+                <asp:BoundField DataField="id_usuario" HeaderText="id_usuario" InsertVisible="False" ReadOnly="True" SortExpression="id_usuario" />
+                <asp:BoundField DataField="Usuario" HeaderText="Usuario" SortExpression="Usuario" />
+                <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
+                <asp:BoundField DataField="Rol" HeaderText="Rol" SortExpression="Rol" />
+            </Columns>
+        </asp:GridView>
+        <asp:SqlDataSource ID="SqlDataSUsuarios" runat="server" ConnectionString="<%$ ConnectionStrings:GestionProyectosTareasConnectionString2 %>" InsertCommand="INSERT INTO usuarios(nombre, email, password, fecha_creacion, id_rol) VALUES (,,,GETDATE(),)" SelectCommand="SELECT 
+    u.id_usuario,
+    u.nombre AS Usuario,
+    u.email AS Email,
+    r.nombre AS Rol
+FROM 
+    usuarios u
+INNER JOIN 
+    roles r ON u.id_rol = r.id_rol
+ORDER BY 
+    u.id_usuario;
+"></asp:SqlDataSource>
     </form>
     </div>
 </body>

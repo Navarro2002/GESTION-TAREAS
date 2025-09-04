@@ -14,39 +14,21 @@ namespace GESTION_TAREAS.Views.Home
         {
             if (!IsPostBack)
             {
-                lblUsuario.Text = "Juan Pérez";
-
-                // Proyectos de prueba
-                DataTable dtProyectos = new DataTable();
-                dtProyectos.Columns.Add("nombre");
-                dtProyectos.Columns.Add("estado");
-                dtProyectos.Columns.Add("fecha_inicio", typeof(DateTime));
-                dtProyectos.Rows.Add("Proyecto Alpha", "Activo", new DateTime(2024, 1, 10));
-                dtProyectos.Rows.Add("Proyecto Beta", "Finalizado", new DateTime(2023, 5, 2));
-                dtProyectos.Rows.Add("Proyecto Gamma", "En pausa", new DateTime(2024, 3, 15));
-                gvProyectos.DataSource = dtProyectos;
-                gvProyectos.DataBind();
-
-                // Tareas de prueba
-                DataTable dtTareas = new DataTable();
-                dtTareas.Columns.Add("titulo");
-                dtTareas.Columns.Add("estado");
-                dtTareas.Columns.Add("fecha_limite", typeof(DateTime));
-                dtTareas.Rows.Add("Diseñar interfaz", "Pendiente", new DateTime(2024, 8, 15));
-                dtTareas.Rows.Add("Revisión de código", "En progreso", new DateTime(2024, 8, 20));
-                dtTareas.Rows.Add("Pruebas unitarias", "Completada", new DateTime(2024, 7, 30));
-                gvTareas.DataSource = dtTareas;
-                gvTareas.DataBind();
-
-                // Notificaciones de prueba
-                var notificaciones = new List<dynamic>
+                // Verificar que el usuario esté autenticado
+                if (Session["IdUsuario"] == null)
                 {
-                    new { mensaje = "Tarea 'Diseñar interfaz' asignada.", fecha = DateTime.Now.AddHours(-2) },
-                    new { mensaje = "Proyecto 'Beta' finalizado.", fecha = DateTime.Now.AddDays(-1) },
-                    new { mensaje = "Nueva tarea disponible.", fecha = DateTime.Now.AddMinutes(-30) }
-                };
-                rptNotificaciones.DataSource = notificaciones;
-                rptNotificaciones.DataBind();
+                    Response.Redirect("/Views/Auth/LoginForm.aspx");
+                    return;
+                }
+
+                // Obtener datos del usuario desde la sesión
+                int idUsuario = Convert.ToInt32(Session["IdUsuario"]);
+                string nombre = Session["Nombre"].ToString();
+                string rol = Session["Rol"].ToString();
+
+                // Mostrar datos en labels
+                lblUsuario.Text = rol;
+
             }
         }
 
@@ -63,5 +45,17 @@ namespace GESTION_TAREAS.Views.Home
         {
             Response.Redirect("/Views/Tareas/TareasForm.aspx");
         }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            Session.Clear(); // Limpia todas las variables de sesión
+            Session.Abandon(); // Marca la sesión actual como terminada
+
+            // Opcional: limpiar cookies de autenticación si usas FormsAuthentication
+            // FormsAuthentication.SignOut();
+
+            Response.Redirect("/Views/Auth/LoginForm.aspx");
+        }
     }
+    
 }

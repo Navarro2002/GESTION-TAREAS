@@ -1,0 +1,124 @@
+﻿body {
+    background-color: #0E0570;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    font-family: Arial, sans-serif;
+    color: #fff;
+    padding-top: 30px;
+}
+
+#header {
+    background-color: #0099d3;
+    border-radius: 12px;
+    padding: 15px 25px;
+    box-shadow: 0 4px 20px rgba(0,153,211,0.4);
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+
+#formlogin {
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 0 20px rgba(87,47,150,0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #0E0570;
+    margin-top: 20px;
+}
+
+.form-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.form-label {
+    width: 120px;
+    text-align: right;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.form-input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(90deg, #572F96, #7A4CC2);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+    .btn:hover {
+        box-shadow: 0 0 15px #572F96;
+        transform: translateY(-2px);
+    }
+
+.dashboard, .tareas, .Usuarios {
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    color: #0E0570;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th {
+    background-color: #0d013d;
+    color: white;
+    padding: 12px;
+    text-align: left;
+}
+
+td {
+    background-color: #f9f9f9;
+    padding: 10px;
+}
+
+tr:nth-child(even) td {
+    background-color: #ececec;
+}
+
+tr:hover td {
+    background-color: #d6d6d6;
+}
+
+.notificaciones {
+    width: 300px;
+    background-color: #fff3cd;
+    padding: 20px;
+    border-radius: 12px;
+    border-left: 3px solid #ccc;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    margin: 20px 0;
+}
+
+h1, h2 {
+    color: #572F96;
+    text-align: center;
+}
