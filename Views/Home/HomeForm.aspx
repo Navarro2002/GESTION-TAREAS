@@ -2,12 +2,14 @@
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
+     
 <head runat="server">
+    <link href="<%= ResolveUrl("~/Diseño/StyleSheet1.css")  %>"" rel="stylesheet" type="text/css" />
     <title>Inicio - Sistema de Gestión de Proyectos</title>
-    <!-- Chart.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+    <div class="dashboard">
     <form id="form1" runat="server">
         <h1>Bienvenido, <asp:Label ID="lblUsuario" runat="server" >User</asp:Label>
         </h1>
@@ -34,7 +36,19 @@
                         </Columns>
                     </asp:GridView>
                 </td>
+                 <td>
+                 <div class="Gestiones">
+                    <h3>Administración</h3>
+                     <p>
+                         <asp:Button ID="btnUsuario" CssClass="btn" runat="server" Text="Crear Usuario" OnClick="btnUsuario_Click" Width="114px" />
+                     </p>
+                     <p>
+                         <asp:Button ID="btnTarea" runat="server" CssClass="btn" Text="Crear Tarea" OnClick="btnTarea_Click" Width="113px" />
+                     </p>
+                     </div>
+                 </td>
                 <td>
+                    <div class="notificaciones">
                     <h3>Notificaciones</h3>
                     <asp:Repeater ID="rptNotificaciones" runat="server">
                         <ItemTemplate>
@@ -44,7 +58,9 @@
                             </div>
                         </ItemTemplate>
                     </asp:Repeater>
+                    </div>
                 </td>
+               
             </tr>
         </table>
         <hr />
@@ -61,8 +77,9 @@
             </tr>
         </table>
     </form>
+        </div>
     <script>
-        // Datos de ejemplo, reemplaza por datos reales si lo deseas
+        // Datos de ejemplo
         var proyectosPorEstado = {
             labels: ['Activo', 'Finalizado', 'En pausa'],
             data: [5, 2, 1]
@@ -105,5 +122,6 @@
             }
         });
     </script>
+
 </body>
 </html>

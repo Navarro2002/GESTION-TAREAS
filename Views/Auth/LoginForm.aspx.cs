@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using GESTION_TAREAS.Views.Home;
 
 namespace GESTION_TAREAS.Views.Auth
 {
@@ -19,7 +20,7 @@ namespace GESTION_TAREAS.Views.Auth
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("/Views/Home/HomeForm.aspx");
         }
     }
 }

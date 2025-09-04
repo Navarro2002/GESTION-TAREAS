@@ -51,6 +51,24 @@ namespace GESTION_TAREAS.Views.Home
         protected global::System.Web.UI.WebControls.GridView gvTareas;
 
         /// <summary>
+        /// Control btnUsuario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnUsuario;
+
+        /// <summary>
+        /// Control btnTarea.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnTarea;
+
+        /// <summary>
         /// Control rptNotificaciones.
         /// </summary>
         /// <remarks>

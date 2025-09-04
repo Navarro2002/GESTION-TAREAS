@@ -5,8 +5,10 @@
 <head runat="server">
     <title>Administrar Usuarios</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link href="<%= ResolveUrl("~/Diseño/StyleSheet1.css")  %>"" rel="stylesheet" type="text/css" />
 </head>
 <body>
+    <div class="Usuarios">
     <form id="form1" runat="server">
         <h1>Administrar Usuarios</h1>
         <h2>Crear nuevo usuario</h2>
@@ -38,13 +40,14 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <asp:Button ID="btnCrear" runat="server" Text="Crear Usuario" OnClick="btnCrear_Click" />
+                    <asp:Button ID="btnCrear" CssClass="btn" runat="server" Text="Crear Usuario" OnClick="btnCrear_Click" />
                 </td>
             </tr>
         </table>
         <hr />
         <h2>Lista de usuarios</h2>
-        <asp:Table ID="TableUsuarios" runat="server" BorderWidth="1" GridLines="Both"></asp:Table>
+        <asp:Table ID="TableUsuarios" cssClass="table2" runat="server" BorderWidth="1" GridLines="Both"></asp:Table>
     </form>
+    </div>
 </body>
 </html>

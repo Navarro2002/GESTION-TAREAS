@@ -8,8 +8,8 @@ using System.Web.UI.WebControls;
 
 namespace GESTION_TAREAS.Views.Home
 {
-	public partial class HomeForm : System.Web.UI.Page
-	{
+    public partial class HomeForm : System.Web.UI.Page
+    {
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -53,6 +53,15 @@ namespace GESTION_TAREAS.Views.Home
         protected void gvProyectos_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        protected void btnUsuario_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Views/Usuarios/UsuariosForm.aspx");
+        }
+        protected void btnTarea_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Views/Tareas/TareasForm.aspx");
         }
     }
 }
