@@ -26,13 +26,15 @@
     <div class="dashboard">
     <form id="form1" runat="server">
         <h1>Bienvenido, <asp:Label ID="lblUsuario" runat="server" >User</asp:Label>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <asp:Button ID="btnLogout" runat="server" Text="Cerrar sesión" CssClass="btn" OnClick="btnLogout_Click" />
+
         </h1>
         <h2>Resumen</h2>
         <table class="auto-style1">
             <tr>
                 <td class="auto-style3">
                     <h3>Proyectos</h3>
-                                        <asp:Button ID="btnLogout" runat="server" Text="Cerrar sesión" OnClick="btnLogout_Click" />
 
                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConexionSQL %>" SelectCommand="SELECT 
     p.id_proyecto,
@@ -133,7 +135,7 @@ ORDER BY
                          <asp:Button ID="btnTarea" runat="server" CssClass="btn" Text="Crear Tarea" OnClick="btnTarea_Click" Width="153px" />
                      </p>
                      <p>
-                         <asp:Button ID="btnProyectos" runat="server" CssClass="btn" Height="29px" Text="Administrar Proyectos" Width="165px" />
+                         <asp:Button ID="btnProyectos" runat="server" CssClass="btn" Height="29px" Text="Administrar Proyectos" Width="165px" OnClick="btnProyectos_Click" />
                      </p>
                      </div>
                  </td>

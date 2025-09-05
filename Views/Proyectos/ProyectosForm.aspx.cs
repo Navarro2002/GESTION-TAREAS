@@ -13,5 +13,23 @@ namespace GESTION_TAREAS.Views.Proyectos
         {
 
         }
+
+        protected void btnCrear_Click(object sender, EventArgs e)
+        {
+            if (Page.IsValid)
+            {
+                SqlDataProyectos.Insert(); // La fecha se llena automáticamente
+                GridView1.DataBind();
+
+                txtNombre.Text = "";
+                txtDescripcion.Text = "";
+                lblMensaje.Text = "Proyecto creado exitosamente";
+                lblMensaje.Visible = true;
+
+                // Registrar script para ocultar después de 3 segundos
+                string script = "setTimeout(function(){ document.getElementById('" + lblMensaje.ClientID + "').style.display='none'; }, 3000);";
+                ClientScript.RegisterStartupScript(this.GetType(), "OcultarMensaje", script, true);
+            }
+        }
     }
 }

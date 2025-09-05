@@ -56,6 +56,11 @@ namespace GESTION_TAREAS.Views.Home
 
             Response.Redirect("/Views/Auth/LoginForm.aspx");
         }
+
+        protected void btnProyectos_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Views/Proyectos/ProyectosForm.aspx");
+        }
     }
     
 }

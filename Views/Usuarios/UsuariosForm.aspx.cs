@@ -47,7 +47,19 @@ namespace GESTION_TAREAS.Views.Usuarios
                 txtNombre.Text = "";
                 txtCorreo.Text = "";
                 txtContrasena.Text = "";
+
+                lblMensaje.Text = "Usuario creado exitosamente";
+                lblMensaje.Visible = true;
+
+                // Registrar script para ocultar después de 3 segundos
+                string script = "setTimeout(function(){ document.getElementById('" + lblMensaje.ClientID + "').style.display='none'; }, 3000);";
+                ClientScript.RegisterStartupScript(this.GetType(), "OcultarMensaje", script, true);
             }
+        }
+
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
