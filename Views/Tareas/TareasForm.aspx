@@ -5,9 +5,11 @@
 <head runat="server">
     <title>Administrar Tareas</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+     <link href="<%= ResolveUrl("~/Diseño/StyleSheet1.css")  %>"" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <form id="form1" runat="server">
+    <div class="tareas">
+    <form id="form1" runat="server" >
         <h1>Administrar Tareas</h1>
         <h2>Crear nueva tarea</h2>
         <asp:Label ID="lblMensaje" runat="server" ForeColor="Red" />
@@ -58,13 +60,14 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <asp:Button ID="btnCrear" runat="server" Text="Crear Tarea" OnClick="btnCrear_Click" />
+                    <asp:Button ID="btnCrear" CssClass="btn" runat="server" Text="Crear Tarea" OnClick="btnCrear_Click" />
                 </td>
             </tr>
         </table>
         <hr />
         <h2>Lista de tareas</h2>
-        <asp:Table ID="TableTareas" runat="server" BorderWidth="1" GridLines="Both"></asp:Table>
+        <asp:Table ID="TableTareas" CssClass="table2" runat="server" BorderWidth="1" GridLines="Both"></asp:Table>
     </form>
+        </div>
 </body>
 </html>
