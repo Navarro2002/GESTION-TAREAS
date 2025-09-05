@@ -13,6 +13,7 @@
         <h1>Administrar Usuarios</h1>
         <h2>Crear nuevo usuario</h2>
         <asp:Label ID="lblMensaje" runat="server" ForeColor="Red" />
+        <asp:TextBox ID="txtId" runat="server"></asp:TextBox>
         <table>
             <tr>
                 <td>Nombre:</td>
@@ -29,14 +30,12 @@
             <tr>
                 <td>Rol:</td>
                 <td>
-                    <asp:DropDownList ID="ddlRol" runat="server"></asp:DropDownList>
+                    <asp:DropDownList ID="ddlRol" runat="server" DataSourceID="SqlDataSource1" DataTextField="nombre" DataValueField="id_rol"></asp:DropDownList>
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConexionSQL %>" SelectCommand="SELECT [id_rol], [nombre] FROM [roles]"></asp:SqlDataSource>
                 </td>
             </tr>
             <tr>
-                <td>Activo:</td>
-                <td>
-                    <asp:CheckBox ID="chkActivo" runat="server" Checked="true" />
-                </td>
+                <td colspan="2">&nbsp;</td>
             </tr>
             <tr>
                 <td colspan="2">
@@ -46,26 +45,59 @@
         </table>
         <hr />
         <h2>Lista de usuarios</h2>
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="id_usuario" DataSourceID="SqlDataSUsuarios">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="id_usuario" DataSourceID="SqlDataSUsuarios" AllowPaging="True" AllowSorting="True" BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" CellPadding="4" GridLines="Horizontal">
             <Columns>
+                <asp:CommandField ShowEditButton="True" />
                 <asp:BoundField DataField="id_usuario" HeaderText="id_usuario" InsertVisible="False" ReadOnly="True" SortExpression="id_usuario" />
-                <asp:BoundField DataField="Usuario" HeaderText="Usuario" SortExpression="Usuario" />
-                <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
-                <asp:BoundField DataField="Rol" HeaderText="Rol" SortExpression="Rol" />
+                <asp:BoundField DataField="usuario" HeaderText="usuario" SortExpression="usuario" />
+                <asp:BoundField DataField="email" HeaderText="email" SortExpression="email" />
+                <asp:BoundField DataField="rol" HeaderText="rol" SortExpression="rol" />
+                <asp:BoundField DataField="descripcion" HeaderText="descripcion" SortExpression="descripcion" />
+                <asp:BoundField DataField="fecha_creacion" HeaderText="fecha_creacion" SortExpression="fecha_creacion" />
             </Columns>
+            <FooterStyle BackColor="White" ForeColor="#333333" />
+            <HeaderStyle BackColor="#336666" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#336666" ForeColor="White" HorizontalAlign="Center" />
+            <RowStyle BackColor="White" ForeColor="#333333" />
+            <SelectedRowStyle BackColor="#339966" Font-Bold="True" ForeColor="White" />
+            <SortedAscendingCellStyle BackColor="#F7F7F7" />
+            <SortedAscendingHeaderStyle BackColor="#487575" />
+            <SortedDescendingCellStyle BackColor="#E5E5E5" />
+            <SortedDescendingHeaderStyle BackColor="#275353" />
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSUsuarios" runat="server" ConnectionString="<%$ ConnectionStrings:GestionProyectosTareasConnectionString2 %>" InsertCommand="INSERT INTO usuarios(nombre, email, password, fecha_creacion, id_rol) VALUES (,,,GETDATE(),)" SelectCommand="SELECT 
+        <asp:SqlDataSource ID="SqlDataSUsuarios" runat="server" ConnectionString="<%$ ConnectionStrings:ConexionSQL %>" InsertCommand="INSERT INTO usuarios (nombre, email, password, id_rol, fecha_creacion)
+VALUES (@nombre, @correo, @password, @id_rol, GETDATE());
+" SelectCommand="SELECT 
     u.id_usuario,
-    u.nombre AS Usuario,
-    u.email AS Email,
-    r.nombre AS Rol
-FROM 
-    usuarios u
-INNER JOIN 
-    roles r ON u.id_rol = r.id_rol
-ORDER BY 
-    u.id_usuario;
-"></asp:SqlDataSource>
+    u.nombre AS usuario,
+    u.email,
+    r.nombre AS rol,
+    r.descripcion,
+    u.fecha_creacion
+FROM usuarios u
+INNER JOIN roles r ON u.id_rol = r.id_rol
+ORDER BY u.id_usuario;
+" UpdateCommand="UPDATE usuarios
+SET nombre = @nombre,
+    email = @correo,
+    password = @password,
+    id_rol = @id_rol
+WHERE id_usuario = @id_usuario;
+">
+            <InsertParameters>
+                <asp:ControlParameter ControlID="txtNombre" DefaultValue="" Name="nombre" PropertyName="Text" />
+                <asp:ControlParameter ControlID="txtCorreo" Name="correo" PropertyName="Text" />
+                <asp:ControlParameter ControlID="txtContrasena" Name="password" PropertyName="Text" />
+                <asp:ControlParameter ControlID="ddlRol" DefaultValue="1" Name="id_rol" PropertyName="SelectedValue" />
+            </InsertParameters>
+            <UpdateParameters>
+                <asp:ControlParameter ControlID="txtNombre" Name="nombre" PropertyName="Text" />
+                <asp:ControlParameter ControlID="txtCorreo" Name="correo" PropertyName="Text" />
+                <asp:ControlParameter ControlID="txtContrasena" Name="password" PropertyName="Text" />
+                <asp:ControlParameter ControlID="ddlRol" Name="id_rol" PropertyName="SelectedValue" />
+                <asp:ControlParameter ControlID="txtId" Name="id_usuario" PropertyName="Text" />
+            </UpdateParameters>
+        </asp:SqlDataSource>
     </form>
     </div>
 </body>

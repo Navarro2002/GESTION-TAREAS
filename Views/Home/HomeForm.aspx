@@ -34,7 +34,7 @@
                     <h3>Proyectos</h3>
                                         <asp:Button ID="btnLogout" runat="server" Text="Cerrar sesión" OnClick="btnLogout_Click" />
 
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:GestionProyectosTareasConnectionString %>" SelectCommand="SELECT 
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConexionSQL %>" SelectCommand="SELECT 
     p.id_proyecto,
     p.nombre AS nombre_proyecto,
     p.descripcion,
@@ -76,7 +76,7 @@ ORDER BY
                 </td>
                 <td class="auto-style2">
                     <h3>Tareas asignadas</h3>
-                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:GestionProyectosTareasConnectionString2 %>" SelectCommand="SELECT 
+                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConexionSQL %>" SelectCommand="SELECT 
     t.id_tarea,
     t.titulo AS tarea,
     t.descripcion,
@@ -165,7 +165,7 @@ ORDER BY
 
     <p>
 <asp:SqlDataSource ID="SqlDSTareas" runat="server"
-    ConnectionString="<%$ ConnectionStrings:GestionProyectosTareasConnectionString4 %>"
+    ConnectionString="<%$ ConnectionStrings:ConexionSQL %>"
     SelectCommand="    
     SELECT 
     et.nombre AS Estado,
