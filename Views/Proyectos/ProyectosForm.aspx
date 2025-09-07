@@ -7,6 +7,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
         <link href="<%= ResolveUrl("~/Content/styles.css")  %>"" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .auto-style1 {
+            height: 26px;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -32,8 +37,8 @@
                     <input id="txtFechaInicio" type="date" name="txtFechaInicio" /></td>
             </tr>
             <tr>
-                <td class="auto-style2">Fecha fin:</td>
-                <td>
+                <td class="auto-style1">Fecha fin:</td>
+                <td class="auto-style1">
                     <input id="txtFechaFin" type="date" name="txtFechaFin" /></td>
             </tr>
             <tr>
@@ -47,7 +52,8 @@
             </tr>
         </table>
         <hr />
-        <h2>Lista de proyectos<asp:SqlDataSource ID="SqlDataProyectos" runat="server" ConnectionString="<%$ ConnectionStrings:ConexionSQL %>" DeleteCommand="DELETE FROM [proyectos] WHERE [id_proyecto] = @id_proyecto" InsertCommand="INSERT INTO [proyectos] ([nombre], [descripcion], [fecha_inicio], [fecha_fin], [id_estado], [id_usuario_creador]) VALUES (@nombre, @descripcion, @fecha_inicio, @fecha_fin, @id_estado, @id_usuario_creador)" SelectCommand="SELECT
+        <h2>Lista de proyectos<asp:SqlDataSource ID="SqlDataProyectos" runat="server" ConnectionString="<%$ ConnectionStrings:ConexionSQL %>" DeleteCommand="DELETE FROM [proyectos] WHERE [id_proyecto] = @id_proyecto" InsertCommand="INSERT INTO [proyectos] ([nombre], [descripcion], [fecha_inicio], [fecha_fin], [id_estado], [id_usuario_creador]) VALUES (@nombre, @descripcion, @fecha_inicio, @fecha_fin, @id_estado, @id_usuario_creador)
+" SelectCommand="SELECT
     p.id_proyecto,
     p.nombre,
     p.descripcion,

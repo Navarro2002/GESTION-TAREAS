@@ -42,6 +42,15 @@ namespace GESTION_TAREAS.Views.Proyectos
         protected global::System.Web.UI.WebControls.DropDownList ddlProyecto;
 
         /// <summary>
+        /// Control SqlDataProyectos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataProyectos;
+
+        /// <summary>
         /// Control txtTitulo.
         /// </summary>
         /// <remarks>
@@ -58,6 +67,15 @@ namespace GESTION_TAREAS.Views.Proyectos
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDescripcion;
+
+        /// <summary>
+        /// Control SqlDatAsignado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDatAsignado;
 
         /// <summary>
         /// Control ddlAsignadoA.
@@ -78,6 +96,15 @@ namespace GESTION_TAREAS.Views.Proyectos
         protected global::System.Web.UI.WebControls.DropDownList ddlPrioridad;
 
         /// <summary>
+        /// Control SqlDataPrioridad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataPrioridad;
+
+        /// <summary>
         /// Control ddlEstado.
         /// </summary>
         /// <remarks>
@@ -87,13 +114,13 @@ namespace GESTION_TAREAS.Views.Proyectos
         protected global::System.Web.UI.WebControls.DropDownList ddlEstado;
 
         /// <summary>
-        /// Control txtFechaLimite.
+        /// Control SqlDataEstado.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFechaLimite;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataEstado;
 
         /// <summary>
         /// Control btnCrear.
@@ -105,12 +132,21 @@ namespace GESTION_TAREAS.Views.Proyectos
         protected global::System.Web.UI.WebControls.Button btnCrear;
 
         /// <summary>
-        /// Control TableTareas.
+        /// Control GridViewTarea.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table TableTareas;
+        protected global::System.Web.UI.WebControls.GridView GridViewTarea;
+
+        /// <summary>
+        /// Control SqlDataTarea.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataTarea;
     }
 }

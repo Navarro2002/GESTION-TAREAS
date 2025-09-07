@@ -47,18 +47,15 @@ FROM
     proyectos p
 INNER JOIN 
     estados_tareas e ON p.id_estado = e.id_estado
-INNER JOIN 
+LEFT JOIN 
     usuarios_proyectos up ON p.id_proyecto = up.id_proyecto
-WHERE 
-    up.id_usuario = @IdUsuario  -- Filtra por usuario
 ORDER BY 
-    p.id_proyecto;">
-                        <SelectParameters>
-                            <asp:SessionParameter DefaultValue="" Name="IdUsuario" SessionField="IdUsuario" />
-                        </SelectParameters>
+    p.id_proyecto;
+">
                     </asp:SqlDataSource>
-                    <asp:GridView ID="gvProyectos" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="gvProyectos_SelectedIndexChanged" DataKeyNames="id_proyecto" DataSourceID="SqlDataSource1" AllowPaging="True" AllowSorting="True" BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" CellPadding="4" GridLines="Horizontal">
+                    <asp:GridView ID="gvProyectos" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="gvProyectos_SelectedIndexChanged" DataKeyNames="id_proyecto" DataSourceID="SqlDataSource1" AllowPaging="True" BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" CellPadding="4" GridLines="Horizontal">
                         <Columns>
+                            <asp:BoundField DataField="id_proyecto" HeaderText="id_proyecto" SortExpression="id_proyecto" InsertVisible="False" ReadOnly="True" />
                             <asp:BoundField DataField="nombre_proyecto" HeaderText="nombre_proyecto" SortExpression="nombre_proyecto" />
                             <asp:BoundField DataField="descripcion" HeaderText="descripcion" SortExpression="descripcion" />
                             <asp:BoundField DataField="fecha_inicio" HeaderText="fecha_inicio" SortExpression="fecha_inicio" />
@@ -84,30 +81,22 @@ ORDER BY
     t.descripcion,
     t.fecha_creacion,
     t.fecha_limite,
-    p.nombre AS proyecto,
-    u.nombre AS usuario_asignado
+    p.nombre AS proyecto
 FROM 
     tareas t
 INNER JOIN 
     estados_tareas et ON t.id_estado = et.id_estado
 INNER JOIN 
     proyectos p ON t.id_proyecto = p.id_proyecto
-LEFT JOIN 
-    usuarios_tareas ut ON t.id_tarea = ut.id_tarea
-LEFT JOIN 
-    usuarios u ON ut.id_usuario = u.id_usuario
 WHERE 
     et.nombre = 'Pendiente'
-    AND ut.id_usuario = @IdUsuario  -- Filtra por usuario específico
 ORDER BY 
     t.fecha_limite;
 ">
-                        <SelectParameters>
-                            <asp:SessionParameter DefaultValue="" Name="IdUsuario" SessionField="IdUsuario" />
-                        </SelectParameters>
                     </asp:SqlDataSource>
                     <asp:GridView ID="gvTareas" runat="server" AutoGenerateColumns="False" DataKeyNames="id_tarea" DataSourceID="SqlDataSource2" BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" CellPadding="4" GridLines="Horizontal">
                         <Columns>
+                            <asp:BoundField DataField="id_tarea" HeaderText="id_tarea" SortExpression="id_tarea" InsertVisible="False" ReadOnly="True" />
                             <asp:BoundField DataField="tarea" HeaderText="tarea" SortExpression="tarea" />
                             <asp:BoundField DataField="descripcion" HeaderText="descripcion" SortExpression="descripcion" />
                             <asp:BoundField DataField="fecha_creacion" HeaderText="fecha_creacion" SortExpression="fecha_creacion" />
@@ -168,25 +157,18 @@ ORDER BY
     <p>
 <asp:SqlDataSource ID="SqlDSTareas" runat="server"
     ConnectionString="<%$ ConnectionStrings:ConexionSQL %>"
-    SelectCommand="    
-    SELECT 
+    SelectCommand="SELECT 
     et.nombre AS Estado,
     COUNT(t.id_tarea) AS TotalTareas
 FROM 
-    usuarios_tareas ut
-INNER JOIN 
-    tareas t ON ut.id_tarea = t.id_tarea
-INNER JOIN 
-    estados_tareas et ON t.id_estado = et.id_estado
-WHERE 
-    ut.id_usuario = @idUsuario
+    estados_tareas et
+LEFT JOIN 
+    tareas t ON t.id_estado = et.id_estado
 GROUP BY 
+    et.nombre
+ORDER BY 
     et.nombre;
-
 ">
-    <SelectParameters>
-        <asp:SessionParameter Name="idUsuario" SessionField="idUsuario" />
-    </SelectParameters>
 </asp:SqlDataSource>
     </p>
 

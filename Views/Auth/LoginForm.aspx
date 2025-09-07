@@ -28,7 +28,7 @@
             <br/>
             <asp:Button ID="btnLogin" runat="server" Text="Iniciar sesión" CssClass="btn" OnClick="btnLogin_Click" Width="119px" />
 
-            <asp:Label ID="lblMessage" runat="server" CssClass="error-message" />
+            <asp:Label ID="lblMessage" runat="server" CssClass="error-message" ForeColor="Red" />
         </div>
     </form>
 </body>

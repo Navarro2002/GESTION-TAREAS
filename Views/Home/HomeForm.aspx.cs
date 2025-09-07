@@ -15,19 +15,20 @@ namespace GESTION_TAREAS.Views.Home
             if (!IsPostBack)
             {
                 // Verificar que el usuario esté autenticado
-                if (Session["IdUsuario"] == null)
-                {
-                    Response.Redirect("/Views/Auth/LoginForm.aspx");
-                    return;
-                }
+                //if (Session["IdUsuario"] == null)
+                //{
+                //    Response.Redirect("/Views/Auth/LoginForm.aspx");
+                //    return;
+                //}
 
-                // Obtener datos del usuario desde la sesión
-                int idUsuario = Convert.ToInt32(Session["IdUsuario"]);
-                string nombre = Session["Nombre"].ToString();
-                string rol = Session["Rol"].ToString();
+                // Usando variables opcionales con null-check
+                int idUsuario = Session["IdUsuario"] != null ? Convert.ToInt32(Session["IdUsuario"]) : 0;
+                string nombre = Session["Nombre"] != null ? Session["Nombre"].ToString() : "Invitado";
+                string rol = Session["Rol"] != null ? Session["Rol"].ToString() : "Sin rol";
 
                 // Mostrar datos en labels
                 lblUsuario.Text = rol;
+
 
             }
         }
